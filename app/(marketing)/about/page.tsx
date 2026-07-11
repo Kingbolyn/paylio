@@ -138,7 +138,7 @@ export default function AboutPage() {
             <p className="text-xs font-bold text-white/30 uppercase tracking-[0.15em] mb-3">Note</p>
             <p className="text-sm text-white/40 leading-relaxed">
               Paylio is a portfolio concept built by{' '}
-              <Link href="https://apexcode.dev" className="text-teal/70 hover:text-teal transition-colors">Apex Code</Link>
+              <Link href="https://paylio-taupe.vercel.app" className="text-teal/70 hover:text-teal transition-colors">Apex Code</Link>
               . It demonstrates product thinking, design execution, and full-stack engineering. It does not process real transactions or hold real funds.
             </p>
           </div>

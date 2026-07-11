@@ -11,6 +11,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://paylio-taupe.vercel.app'),
   title: 'Paylio — Money, made simple.',
   description: 'A fintech experience designed to feel as trustworthy as it is simple.',
   keywords: ['fintech', 'banking', 'transfers', 'money management'],
