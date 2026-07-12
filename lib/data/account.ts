@@ -16,7 +16,7 @@ export const mockAccounts: Account[] = [
     id: 'acc_001',
     name: 'Main Account',
     accountNumber: '0123456789',
-    balance: 487_350.0,
+    balance: 50_000_000.0,
     currency: 'NGN',
     type: 'checking',
   },

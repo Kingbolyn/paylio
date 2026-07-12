@@ -28,7 +28,7 @@ export default function PageShell({
     >
       {showHeader && <AppHeader />}
 
-      <main id="main-content" className={cn('flex flex-1 flex-col', padBottom && 'pb-24')}>
+      <main id="main-content" className={cn('flex flex-1 flex-col', padBottom && 'pb-24 lg:pb-8')}>
         {children}
       </main>
     </div>

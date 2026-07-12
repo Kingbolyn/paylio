@@ -1,20 +1,16 @@
-import type { Metadata } from 'next'
+'use client'
+
 import { PageShell } from '@/components/layout'
 import { BalanceCard, QuickActions, TransactionList } from '@/components/home'
-import { fetchTransactionsByDate } from '@/lib/data/fetchers'
+import { useDemoStore } from '@/lib/demo-store'
 
-export const metadata: Metadata = {
-  title: 'Home | Paylio Demo',
-  description:
-    'Your Paylio dashboard — view your balance, recent transactions, and quick-access controls in a live interactive demo.',
-}
-
-export default async function HomePage() {
-  const grouped = await fetchTransactionsByDate(10)
+export default function HomePage() {
+  const { groupedTransactions } = useDemoStore()
+  const recent = groupedTransactions.slice(0, 5)
 
   return (
     <PageShell>
-      <div className="flex flex-col gap-6 px-5 pb-6 pt-2">
+      <div className="flex flex-col gap-6 px-5 pb-6 pt-2 lg:max-w-2xl">
         <BalanceCard />
         <QuickActions />
         <div className="-mb-2 flex items-center justify-between">
@@ -27,7 +23,9 @@ export default async function HomePage() {
           </a>
         </div>
       </div>
-      <TransactionList grouped={grouped} />
+      <div className="lg:max-w-2xl">
+        <TransactionList grouped={recent} />
+      </div>
     </PageShell>
   )
 }

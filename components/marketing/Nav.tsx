@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
+import PayloLogo from '@/components/marketing/PayloLogo'
 
 const links = [
   { label: 'Home', href: '/' },
@@ -43,30 +44,8 @@ export default function Nav() {
       >
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-8 px-5 lg:h-[72px] lg:px-8">
           {/* Logo */}
-          <Link
-            href="/"
-            className="group flex flex-shrink-0 items-center gap-2.5"
-            aria-label="Paylio — home"
-          >
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal shadow-teal">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path
-                  d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2Z"
-                  fill="white"
-                  fillOpacity="0.9"
-                />
-                <path
-                  d="M9 12l2 2.5 4-4.5"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-            <span className="text-lg font-extrabold tracking-tight text-white" aria-hidden="true">
-              Paylio
-            </span>
+          <Link href="/" aria-label="Paylio — home">
+            <PayloLogo size={32} wordmark />
           </Link>
 
           {/* Desktop nav */}

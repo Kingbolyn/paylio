@@ -8,8 +8,8 @@ export const mockCards: Card[] = [
     network: 'visa',
     expiry: '09/28',
     status: 'active',
-    spendingLimit: 200_000,
-    spendingUsed: 87_450,
+    spendingLimit: undefined,
+    spendingUsed: undefined,
     isVirtual: false,
   },
   {

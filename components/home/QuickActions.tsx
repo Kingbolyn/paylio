@@ -1,74 +1,122 @@
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
-
-interface Action {
-  label: string
-  href: string
-  icon: React.ReactNode
-  bgColor: string
-  iconColor: string
-}
-
-const actions: Action[] = [
-  {
-    label: 'Send',
-    href: '/demo/transfer',
-    bgColor: 'rgba(20,184,166,0.12)',
-    iconColor: '#14B8A6',
-    icon: <SendIcon />,
-  },
-  {
-    label: 'Receive',
-    href: '/demo/transfer',
-    bgColor: 'rgba(59,130,246,0.12)',
-    iconColor: '#60A5FA',
-    icon: <ReceiveIcon />,
-  },
-  {
-    label: 'Top Up',
-    href: '/demo/transfer',
-    bgColor: 'rgba(139,92,246,0.12)',
-    iconColor: '#A78BFA',
-    icon: <TopUpIcon />,
-  },
-  {
-    label: 'History',
-    href: '/demo/insights',
-    bgColor: 'rgba(255,255,255,0.07)',
-    iconColor: 'rgba(255,255,255,0.55)',
-    icon: <HistoryIcon />,
-  },
-]
+import AddMoneySheet from '@/components/demo/AddMoneySheet'
 
 export default function QuickActions() {
+  const [showAdd, setShowAdd] = useState(false)
+
   return (
-    <div className="flex items-center justify-between px-1">
-      {actions.map((action) => (
-        <Link
-          key={action.label}
-          href={action.href}
-          className="group flex flex-col items-center gap-2.5"
+    <>
+      <div className="flex items-center justify-between px-1">
+        <ActionLink
+          label="Send"
+          href="/demo/transfer"
+          bgColor="rgba(20,184,166,0.12)"
+          iconColor="#14B8A6"
         >
-          <div
-            className={cn(
-              'flex h-14 w-14 items-center justify-center rounded-2xl',
-              'border border-white/[0.07]',
-              'transition-all duration-150',
-              'group-hover:scale-105 group-active:scale-95'
-            )}
-            style={{
-              backgroundColor: action.bgColor,
-              color: action.iconColor,
-            }}
-          >
-            {action.icon}
-          </div>
-          <span className="text-[11px] font-semibold text-white/50 transition-colors group-hover:text-white/75">
-            {action.label}
-          </span>
-        </Link>
-      ))}
-    </div>
+          <SendIcon />
+        </ActionLink>
+
+        {/* Add Money — opens sheet, no nav */}
+        <ActionButton
+          label="Add"
+          bgColor="rgba(59,130,246,0.12)"
+          iconColor="#60A5FA"
+          onClick={() => setShowAdd(true)}
+        >
+          <AddIcon />
+        </ActionButton>
+
+        <ActionLink
+          label="Top Up"
+          href="/demo/transfer"
+          bgColor="rgba(139,92,246,0.12)"
+          iconColor="#A78BFA"
+        >
+          <TopUpIcon />
+        </ActionLink>
+
+        <ActionLink
+          label="History"
+          href="/demo/insights"
+          bgColor="rgba(255,255,255,0.07)"
+          iconColor="rgba(255,255,255,0.55)"
+        >
+          <HistoryIcon />
+        </ActionLink>
+      </div>
+
+      {showAdd && <AddMoneySheet onClose={() => setShowAdd(false)} />}
+    </>
+  )
+}
+
+function ActionLink({
+  label,
+  href,
+  bgColor,
+  iconColor,
+  children,
+}: {
+  label: string
+  href: string
+  bgColor: string
+  iconColor: string
+  children: React.ReactNode
+}) {
+  return (
+    <Link href={href} className="group flex flex-col items-center gap-2.5">
+      <div
+        className={cn(
+          'flex h-14 w-14 items-center justify-center rounded-2xl',
+          'border border-white/[0.07]',
+          'transition-all duration-150',
+          'group-hover:scale-105 group-active:scale-95'
+        )}
+        style={{ backgroundColor: bgColor, color: iconColor }}
+      >
+        {children}
+      </div>
+      <span className="text-[11px] font-semibold text-white/50 transition-colors group-hover:text-white/75">
+        {label}
+      </span>
+    </Link>
+  )
+}
+
+function ActionButton({
+  label,
+  bgColor,
+  iconColor,
+  onClick,
+  children,
+}: {
+  label: string
+  bgColor: string
+  iconColor: string
+  onClick: () => void
+  children: React.ReactNode
+}) {
+  return (
+    <button onClick={onClick} className="group flex flex-col items-center gap-2.5">
+      <div
+        className={cn(
+          'flex h-14 w-14 items-center justify-center rounded-2xl',
+          'border border-white/[0.07]',
+          'transition-all duration-150',
+          'group-hover:scale-105 group-active:scale-95'
+        )}
+        style={{ backgroundColor: bgColor, color: iconColor }}
+      >
+        {children}
+      </div>
+      <span className="text-[11px] font-semibold text-white/50 transition-colors group-hover:text-white/75">
+        {label}
+      </span>
+    </button>
   )
 }
 
@@ -91,7 +139,7 @@ function SendIcon() {
   )
 }
 
-function ReceiveIcon() {
+function AddIcon() {
   return (
     <svg
       width="22"
@@ -104,9 +152,7 @@ function ReceiveIcon() {
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <path d="M12 2v14" />
-      <path d="M5 9l7 7 7-7" />
-      <path d="M5 20h14" />
+      <path d="M12 2v14M5 9l7 7 7-7M5 20h14" />
     </svg>
   )
 }
