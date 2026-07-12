@@ -6,35 +6,35 @@ import { cn } from '@/lib/utils'
 
 interface NavItem {
   label: string
-  href:  string
-  icon:  (active: boolean) => React.ReactNode
+  href: string
+  icon: (active: boolean) => React.ReactNode
 }
 
 const navItems: NavItem[] = [
   {
     label: 'Home',
-    href:  '/demo/home',
-    icon:  (active) => <HomeIcon active={active} />,
+    href: '/demo/home',
+    icon: (active) => <HomeIcon active={active} />,
   },
   {
     label: 'Transfer',
-    href:  '/demo/transfer',
-    icon:  (active) => <TransferIcon active={active} />,
+    href: '/demo/transfer',
+    icon: (active) => <TransferIcon active={active} />,
   },
   {
     label: 'Insights',
-    href:  '/demo/insights',
-    icon:  (active) => <InsightsIcon active={active} />,
+    href: '/demo/insights',
+    icon: (active) => <InsightsIcon active={active} />,
   },
   {
     label: 'Cards',
-    href:  '/demo/cards',
-    icon:  (active) => <CardsIcon active={active} />,
+    href: '/demo/cards',
+    icon: (active) => <CardsIcon active={active} />,
   },
   {
     label: 'Security',
-    href:  '/demo/security',
-    icon:  (active) => <SecurityIcon active={active} />,
+    href: '/demo/security',
+    icon: (active) => <SecurityIcon active={active} />,
   },
 ]
 
@@ -42,8 +42,11 @@ export default function BottomNav() {
   const pathname = usePathname()
 
   return (
-    <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-mobile bg-navy-deep/95 backdrop-blur-md border-t border-white/[0.07] shadow-nav pb-safe-bottom z-40">
-      <div className="flex items-center justify-around px-2 h-16">
+    <nav
+      aria-label="App navigation"
+      className="pb-safe-bottom fixed bottom-0 left-1/2 z-40 w-full max-w-mobile -translate-x-1/2 border-t border-white/[0.07] bg-navy-deep/95 shadow-nav backdrop-blur-md"
+    >
+      <div className="flex h-16 items-center justify-around px-2">
         {navItems.map((item) => {
           const active = pathname === item.href || pathname.startsWith(item.href + '/')
 
@@ -51,6 +54,7 @@ export default function BottomNav() {
             <Link
               key={item.href}
               href={item.href}
+              aria-current={active ? 'page' : undefined}
               className={cn(
                 'relative flex flex-col items-center justify-center gap-1',
                 'h-full flex-1 transition-all duration-200',
@@ -60,7 +64,7 @@ export default function BottomNav() {
               {/* Active indicator bar */}
               <span
                 className={cn(
-                  'absolute top-0 left-1/2 -translate-x-1/2',
+                  'absolute left-1/2 top-0 -translate-x-1/2',
                   'h-[2px] rounded-full transition-all duration-200',
                   active ? 'w-6 bg-teal' : 'w-0 bg-transparent'
                 )}
@@ -95,7 +99,7 @@ export default function BottomNav() {
 
 function HomeIcon({ active }: { active: boolean }) {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path
         d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9.5Z"
         stroke={active ? '#14B8A6' : 'rgba(255,255,255,0.35)'}
@@ -115,7 +119,7 @@ function HomeIcon({ active }: { active: boolean }) {
 
 function TransferIcon({ active }: { active: boolean }) {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path
         d="M7 16V4m0 0L4 7m3-3 3 3"
         stroke={active ? '#14B8A6' : 'rgba(255,255,255,0.35)'}
@@ -136,21 +140,33 @@ function TransferIcon({ active }: { active: boolean }) {
 
 function InsightsIcon({ active }: { active: boolean }) {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <rect
-        x="3" y="12" width="4" height="9" rx="1"
+        x="3"
+        y="12"
+        width="4"
+        height="9"
+        rx="1"
         fill={active ? 'rgba(20,184,166,0.15)' : 'none'}
         stroke={active ? '#14B8A6' : 'rgba(255,255,255,0.35)'}
         strokeWidth="1.75"
       />
       <rect
-        x="10" y="7" width="4" height="14" rx="1"
+        x="10"
+        y="7"
+        width="4"
+        height="14"
+        rx="1"
         fill={active ? 'rgba(20,184,166,0.15)' : 'none'}
         stroke={active ? '#14B8A6' : 'rgba(255,255,255,0.35)'}
         strokeWidth="1.75"
       />
       <rect
-        x="17" y="3" width="4" height="18" rx="1"
+        x="17"
+        y="3"
+        width="4"
+        height="18"
+        rx="1"
         fill={active ? 'rgba(20,184,166,0.15)' : 'none'}
         stroke={active ? '#14B8A6' : 'rgba(255,255,255,0.35)'}
         strokeWidth="1.75"
@@ -161,9 +177,13 @@ function InsightsIcon({ active }: { active: boolean }) {
 
 function CardsIcon({ active }: { active: boolean }) {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <rect
-        x="2" y="5" width="20" height="14" rx="3"
+        x="2"
+        y="5"
+        width="20"
+        height="14"
+        rx="3"
         fill={active ? 'rgba(20,184,166,0.15)' : 'none'}
         stroke={active ? '#14B8A6' : 'rgba(255,255,255,0.35)'}
         strokeWidth="1.75"
@@ -185,7 +205,7 @@ function CardsIcon({ active }: { active: boolean }) {
 
 function SecurityIcon({ active }: { active: boolean }) {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path
         d="M12 3L4 7v5c0 4.4 3.4 8.5 8 9.5 4.6-1 8-5.1 8-9.5V7l-8-4Z"
         fill={active ? 'rgba(20,184,166,0.15)' : 'none'}

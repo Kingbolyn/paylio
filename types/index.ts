@@ -94,19 +94,21 @@ export interface SecuritySettings {
   largeTransferThreshold: number
 }
 
+// ─── User ─────────────────────────────────────────────────────
+export interface User {
+  id: string
+  firstName: string
+  lastName: string
+  fullName: string
+  initials: string
+  email: string
+  phone: string
+  joinedDate: string
+}
+
 // ─── Navigation ───────────────────────────────────────────────
 export interface NavItem {
   label: string
   href: string
   icon: string
-}
-
-// ─── UI State ─────────────────────────────────────────────────
-export type LoadingState = 'idle' | 'loading' | 'success' | 'error'
-
-export interface ToastMessage {
-  id: string
-  type: 'success' | 'error' | 'warning' | 'info'
-  message: string
-  duration?: number
 }

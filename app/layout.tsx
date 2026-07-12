@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
+import { env } from '@/lib/env'
 import './globals.css'
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -11,7 +12,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://paylio-taupe.vercel.app'),
+  metadataBase: new URL(env.appUrl),
   title: 'Paylio — Money, made simple.',
   description: 'A fintech experience designed to feel as trustworthy as it is simple.',
   keywords: ['fintech', 'banking', 'transfers', 'money management'],
@@ -21,13 +22,15 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Paylio',
     title: 'Paylio — Money, made simple.',
-    description: 'Banking, transfers, and insights built around you. A portfolio fintech concept by Apex Code.',
+    description:
+      'Banking, transfers, and insights built around you. A portfolio fintech concept by Apex Code.',
     locale: 'en_NG',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Paylio — Money, made simple.',
-    description: 'Banking, transfers, and insights built around you. A portfolio fintech concept by Apex Code.',
+    description:
+      'Banking, transfers, and insights built around you. A portfolio fintech concept by Apex Code.',
     creator: '@apexcode',
   },
 }
@@ -38,16 +41,10 @@ export const viewport: Viewport = {
   themeColor: '#0B1E3D',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={plusJakartaSans.variable} suppressHydrationWarning>
-      <body className={plusJakartaSans.className}>
-        {children}
-      </body>
+      <body className={plusJakartaSans.className}>{children}</body>
     </html>
   )
 }

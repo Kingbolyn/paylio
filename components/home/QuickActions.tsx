@@ -2,41 +2,41 @@ import Link from 'next/link'
 import { cn } from '@/lib/utils'
 
 interface Action {
-  label:   string
-  href:    string
-  icon:    React.ReactNode
+  label: string
+  href: string
+  icon: React.ReactNode
   bgColor: string
   iconColor: string
 }
 
 const actions: Action[] = [
   {
-    label:     'Send',
-    href:      '/demo/transfer',
-    bgColor:   'rgba(20,184,166,0.12)',
+    label: 'Send',
+    href: '/demo/transfer',
+    bgColor: 'rgba(20,184,166,0.12)',
     iconColor: '#14B8A6',
-    icon:      <SendIcon />,
+    icon: <SendIcon />,
   },
   {
-    label:     'Receive',
-    href:      '/demo/transfer',
-    bgColor:   'rgba(59,130,246,0.12)',
+    label: 'Receive',
+    href: '/demo/transfer',
+    bgColor: 'rgba(59,130,246,0.12)',
     iconColor: '#60A5FA',
-    icon:      <ReceiveIcon />,
+    icon: <ReceiveIcon />,
   },
   {
-    label:     'Top Up',
-    href:      '/demo/transfer',
-    bgColor:   'rgba(139,92,246,0.12)',
+    label: 'Top Up',
+    href: '/demo/transfer',
+    bgColor: 'rgba(139,92,246,0.12)',
     iconColor: '#A78BFA',
-    icon:      <TopUpIcon />,
+    icon: <TopUpIcon />,
   },
   {
-    label:     'History',
-    href:      '/demo/insights',
-    bgColor:   'rgba(255,255,255,0.07)',
+    label: 'History',
+    href: '/demo/insights',
+    bgColor: 'rgba(255,255,255,0.07)',
     iconColor: 'rgba(255,255,255,0.55)',
-    icon:      <HistoryIcon />,
+    icon: <HistoryIcon />,
   },
 ]
 
@@ -47,11 +47,11 @@ export default function QuickActions() {
         <Link
           key={action.label}
           href={action.href}
-          className="flex flex-col items-center gap-2.5 group"
+          className="group flex flex-col items-center gap-2.5"
         >
           <div
             className={cn(
-              'w-14 h-14 rounded-2xl flex items-center justify-center',
+              'flex h-14 w-14 items-center justify-center rounded-2xl',
               'border border-white/[0.07]',
               'transition-all duration-150',
               'group-hover:scale-105 group-active:scale-95'
@@ -63,7 +63,7 @@ export default function QuickActions() {
           >
             {action.icon}
           </div>
-          <span className="text-[11px] font-semibold text-white/50 group-hover:text-white/75 transition-colors">
+          <span className="text-[11px] font-semibold text-white/50 transition-colors group-hover:text-white/75">
             {action.label}
           </span>
         </Link>
@@ -74,7 +74,17 @@ export default function QuickActions() {
 
 function SendIcon() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       <line x1="22" y1="2" x2="11" y2="13" />
       <polygon points="22 2 15 22 11 13 2 9 22 2" />
     </svg>
@@ -83,7 +93,17 @@ function SendIcon() {
 
 function ReceiveIcon() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       <path d="M12 2v14" />
       <path d="M5 9l7 7 7-7" />
       <path d="M5 20h14" />
@@ -93,7 +113,17 @@ function ReceiveIcon() {
 
 function TopUpIcon() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       <circle cx="12" cy="12" r="10" />
       <line x1="12" y1="8" x2="12" y2="16" />
       <line x1="8" y1="12" x2="16" y2="12" />
@@ -103,7 +133,17 @@ function TopUpIcon() {
 
 function HistoryIcon() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       <polyline points="12 8 12 12 14 14" />
       <path d="M3.05 11a9 9 0 1 0 .5-4.5" />
       <polyline points="3 3 3 7 7 7" />

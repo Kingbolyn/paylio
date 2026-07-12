@@ -59,7 +59,7 @@ function isSameDay(a: Date, b: Date): boolean {
 }
 
 export function formatTime(timeString: string): string {
-  const [hours, minutes] = timeString.split(':').map(Number)
+  const [hours = 0, minutes = 0] = timeString.split(':').map(Number)
   const period = hours >= 12 ? 'PM' : 'AM'
   const h = hours % 12 || 12
   return `${h}:${String(minutes).padStart(2, '0')} ${period}`
@@ -80,30 +80,30 @@ export function formatAccountNumber(accountNumber: string): string {
 // ─── Category metadata ────────────────────────────────────────
 export function getCategoryLabel(category: TransactionCategory): string {
   const labels: Record<TransactionCategory, string> = {
-    food:           'Food & Dining',
-    transport:      'Transport',
-    shopping:       'Shopping',
-    entertainment:  'Entertainment',
-    utilities:      'Utilities',
-    health:         'Health',
-    transfer:       'Transfer',
-    subscription:   'Subscription',
-    other:          'Other',
+    food: 'Food & Dining',
+    transport: 'Transport',
+    shopping: 'Shopping',
+    entertainment: 'Entertainment',
+    utilities: 'Utilities',
+    health: 'Health',
+    transfer: 'Transfer',
+    subscription: 'Subscription',
+    other: 'Other',
   }
   return labels[category] ?? 'Other'
 }
 
 export function getCategoryColor(category: TransactionCategory): string {
   const colors: Record<TransactionCategory, string> = {
-    food:           '#F59E0B',
-    transport:      '#3B82F6',
-    shopping:       '#8B5CF6',
-    entertainment:  '#EC4899',
-    utilities:      '#14B8A6',
-    health:         '#10B981',
-    transfer:       '#6B7280',
-    subscription:   '#F97316',
-    other:          '#9CA3AF',
+    food: '#F59E0B',
+    transport: '#3B82F6',
+    shopping: '#8B5CF6',
+    entertainment: '#EC4899',
+    utilities: '#14B8A6',
+    health: '#10B981',
+    transfer: '#6B7280',
+    subscription: '#F97316',
+    other: '#9CA3AF',
   }
   return colors[category] ?? '#9CA3AF'
 }
