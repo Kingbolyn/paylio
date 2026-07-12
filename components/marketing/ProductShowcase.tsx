@@ -186,14 +186,29 @@ export default function ProductShowcase() {
 
           {/* Copy */}
           <div className="order-1 flex flex-col gap-6 lg:order-2">
-            <p className="text-xs font-bold uppercase tracking-[0.12em] text-teal">Product</p>
+            <p
+              className="text-xs font-bold uppercase tracking-[0.12em]"
+              style={{ color: '#2DD4BF' }}
+            >
+              Product
+            </p>
             <h2 className="text-4xl font-extrabold leading-tight tracking-tight lg:text-5xl">
               Every naira,
-              <br className="hidden sm:block" /> one screen.
+              <br className="hidden sm:block" />
+              <span
+                style={{
+                  background: 'linear-gradient(135deg, #2DD4BF 0%, #A78BFA 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
+                one screen.
+              </span>
             </h2>
-            <p className="text-lg leading-relaxed text-white/50">
-              Paylio pulls your income, transactions, and spending patterns into a single dashboard.
-              Quick actions up front, full history one tap away.
+            <p className="text-lg leading-relaxed" style={{ color: 'rgba(255,255,255,0.5)' }}>
+              Income, transactions, and spending patterns — one dashboard. Quick actions up front,
+              full history one tap away. No app-switching.
             </p>
             <ul className="mt-1 flex flex-col gap-3.5">
               {bullets.map((item) => {
