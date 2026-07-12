@@ -14,7 +14,7 @@ function Inner({ children }: { children: ReactNode }) {
   if (pin && !sessionUnlocked) return <LoginGate />
 
   return (
-    <div className="flex min-h-dvh bg-[#060714]">
+    <div className="flex min-h-dvh overflow-x-hidden bg-[#060714]">
       {/* Desktop sidebar — hidden on mobile */}
       <SidebarNav />
 

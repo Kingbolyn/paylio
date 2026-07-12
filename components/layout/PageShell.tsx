@@ -21,8 +21,8 @@ export default function PageShell({
   return (
     <div
       className={cn(
-        'flex min-h-dvh w-full flex-col bg-navy',
-        scrollable ? 'overflow-y-auto overscroll-contain' : 'overflow-hidden',
+        'flex min-h-dvh w-full flex-col overflow-x-hidden bg-navy',
+        !scrollable && 'overflow-y-hidden',
         className
       )}
     >

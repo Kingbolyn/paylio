@@ -125,7 +125,7 @@ body {
   min-height: 100dvh;
   margin: 0 auto;
   background-color: var(--color-navy);
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 /* At tablet+ widths the shell is narrower than the viewport —
