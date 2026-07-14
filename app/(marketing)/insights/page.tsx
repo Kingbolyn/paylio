@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 
 export const metadata = {
   title: 'Insights — Paylio',
@@ -36,30 +36,29 @@ const categories = [
 export default function InsightsPage() {
   return (
     <div>
-
       {/* Hero */}
-      <section className="relative pt-32 pb-24 overflow-hidden">
+      <section className="relative overflow-hidden pb-16 pt-24 sm:pb-24 sm:pt-32">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(0,200,170,0.10),transparent)]" />
-        <div className="relative max-w-7xl mx-auto px-5 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-
+        <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
             <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal/10 border border-teal/20 text-teal text-xs font-semibold tracking-wide uppercase mb-6">
-                <span className="w-1.5 h-1.5 rounded-full bg-teal animate-pulse" />
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-teal/20 bg-teal/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-teal">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-teal" />
                 Insights
               </div>
-              <h1 className="text-5xl lg:text-6xl font-black tracking-tight leading-[0.95] mb-6">
+              <h1 className="mb-6 text-5xl font-black leading-[0.95] tracking-tight lg:text-6xl">
                 Know your money.{' '}
                 <span className="bg-gradient-to-r from-teal to-teal-light bg-clip-text text-transparent">
                   Actually know it.
                 </span>
               </h1>
-              <p className="text-lg text-white/50 leading-relaxed mb-10 max-w-lg">
-                Most apps tell you what you spent. Paylio tells you what it means and where the pattern is going.
+              <p className="mb-10 max-w-lg text-lg leading-relaxed text-white/50">
+                Most apps tell you what you spent. Paylio tells you what it means and where the
+                pattern is going.
               </p>
               <Link
                 href="/demo/insights"
-                className="inline-flex items-center gap-2 h-12 px-7 rounded-full bg-teal text-navy text-sm font-bold hover:bg-teal-light transition-all shadow-teal"
+                className="inline-flex h-12 items-center gap-2 rounded-full bg-teal px-7 text-sm font-bold text-navy shadow-teal transition-all hover:bg-teal-light"
               >
                 See Insights in the Demo
               </Link>
@@ -68,57 +67,80 @@ export default function InsightsPage() {
             {/* Spending breakdown visual */}
             <div className="flex justify-center lg:justify-end">
               <div className="w-full max-w-xs rounded-2xl border border-white/[0.08] bg-navy-deep/80 p-6">
-                <div className="flex items-center justify-between mb-5">
+                <div className="mb-5 flex items-center justify-between">
                   <div>
-                    <p className="text-xs text-white/40 mb-1">Total Spent — June</p>
-                    <p className="text-2xl font-black text-white" style={{fontVariantNumeric:'tabular-nums'}}>₦160,400</p>
+                    <p className="mb-1 text-xs text-white/40">Total Spent — June</p>
+                    <p
+                      className="text-2xl font-black text-white"
+                      style={{ fontVariantNumeric: 'tabular-nums' }}
+                    >
+                      ₦160,400
+                    </p>
                   </div>
-                  <span className="text-xs px-2.5 py-1 rounded-full bg-teal/10 text-teal border border-teal/20">-8% vs May</span>
+                  <span className="rounded-full border border-teal/20 bg-teal/10 px-2.5 py-1 text-xs text-teal">
+                    -8% vs May
+                  </span>
                 </div>
                 {/* Chart bars */}
-                <div className="flex items-end gap-1.5 h-24 mb-5">
+                <div className="mb-5 flex h-24 items-end gap-1.5">
                   {[55, 70, 48, 82, 63, 90, 72, 58, 85, 68, 74, 88].map((h, i) => (
-                    <div key={i} className="flex-1 rounded-t" style={{height:`${h}%`, background: i === 11 ? '#00C8AA' : 'rgba(255,255,255,0.07)'}} />
+                    <div
+                      key={i}
+                      className="flex-1 rounded-t"
+                      style={{
+                        height: `${h}%`,
+                        background: i === 11 ? '#00C8AA' : 'rgba(255,255,255,0.07)',
+                      }}
+                    />
                   ))}
                 </div>
                 {/* Categories */}
                 <div className="space-y-2.5">
                   {categories.slice(0, 4).map((cat) => (
                     <div key={cat.name}>
-                      <div className="flex items-center justify-between mb-1">
+                      <div className="mb-1 flex items-center justify-between">
                         <p className="text-xs text-white/50">{cat.name}</p>
-                        <p className="text-xs text-white/70 font-medium tabular-nums">{cat.amount}</p>
+                        <p className="text-xs font-medium tabular-nums text-white/70">
+                          {cat.amount}
+                        </p>
                       </div>
                       <div className="h-1 rounded-full bg-white/[0.06]">
-                        <div className={`h-full rounded-full ${cat.color}`} style={{width:`${cat.pct}%`}} />
+                        <div
+                          className={`h-full rounded-full ${cat.color}`}
+                          style={{ width: `${cat.pct}%` }}
+                        />
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>
 
       {/* Benefits list */}
-      <section className="py-24 border-t border-white/[0.05]">
-        <div className="max-w-7xl mx-auto px-5 lg:px-8">
-          <div className="text-center mb-16">
-            <p className="text-xs font-bold text-teal/70 uppercase tracking-[0.15em] mb-3">What Insights gives you</p>
-            <h2 className="text-4xl lg:text-5xl font-black tracking-tight">
+      <section className="border-t border-white/[0.05] py-24">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="mb-16 text-center">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.15em] text-teal/70">
+              What Insights gives you
+            </p>
+            <h2 className="text-4xl font-black tracking-tight lg:text-5xl">
               Data that leads to decisions.
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {benefits.map((b, i) => (
-              <div key={i} className="rounded-2xl border border-white/[0.07] bg-white/[0.02] hover:border-teal/20 p-8 transition-all duration-200">
-                <div className="w-8 h-8 rounded-lg bg-teal/10 border border-teal/20 flex items-center justify-center mb-5">
+              <div
+                key={i}
+                className="rounded-2xl border border-white/[0.07] bg-white/[0.02] p-8 transition-all duration-200 hover:border-teal/20"
+              >
+                <div className="mb-5 flex h-8 w-8 items-center justify-center rounded-lg border border-teal/20 bg-teal/10">
                   <span className="text-xs font-black text-teal">0{i + 1}</span>
                 </div>
-                <h3 className="text-lg font-bold text-white mb-3">{b.headline}</h3>
-                <p className="text-sm text-white/45 leading-relaxed">{b.body}</p>
+                <h3 className="mb-3 text-lg font-bold text-white">{b.headline}</h3>
+                <p className="text-sm leading-relaxed text-white/45">{b.body}</p>
               </div>
             ))}
           </div>
@@ -126,27 +148,33 @@ export default function InsightsPage() {
       </section>
 
       {/* Full category breakdown */}
-      <section className="py-24 border-t border-white/[0.05]">
-        <div className="max-w-4xl mx-auto px-5 lg:px-8">
-          <div className="text-center mb-12">
+      <section className="border-t border-white/[0.05] py-24">
+        <div className="mx-auto max-w-4xl px-5 lg:px-8">
+          <div className="mb-12 text-center">
             <h2 className="text-4xl font-black tracking-tight">
               Six categories. Every naira accounted for.
             </h2>
           </div>
           <div className="space-y-4">
             {categories.map((cat) => (
-              <div key={cat.name} className="flex items-center gap-6 p-5 rounded-xl border border-white/[0.06] bg-white/[0.02]">
-                <div className={`w-3 h-3 rounded-full flex-shrink-0 ${cat.color}`} />
+              <div
+                key={cat.name}
+                className="flex items-center gap-6 rounded-xl border border-white/[0.06] bg-white/[0.02] p-5"
+              >
+                <div className={`h-3 w-3 flex-shrink-0 rounded-full ${cat.color}`} />
                 <div className="flex-1">
-                  <div className="flex items-center justify-between mb-2">
+                  <div className="mb-2 flex items-center justify-between">
                     <p className="text-sm font-semibold text-white/80">{cat.name}</p>
-                    <p className="text-sm font-bold text-white tabular-nums">{cat.amount}</p>
+                    <p className="text-sm font-bold tabular-nums text-white">{cat.amount}</p>
                   </div>
                   <div className="h-1.5 rounded-full bg-white/[0.06]">
-                    <div className={`h-full rounded-full ${cat.color}`} style={{width:`${cat.pct}%`, transition:'width 0.6s ease'}} />
+                    <div
+                      className={`h-full rounded-full ${cat.color}`}
+                      style={{ width: `${cat.pct}%`, transition: 'width 0.6s ease' }}
+                    />
                   </div>
                 </div>
-                <p className="text-sm text-white/30 w-10 text-right tabular-nums">{cat.pct}%</p>
+                <p className="w-10 text-right text-sm tabular-nums text-white/30">{cat.pct}%</p>
               </div>
             ))}
           </div>
@@ -154,21 +182,20 @@ export default function InsightsPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 border-t border-white/[0.05]">
-        <div className="max-w-3xl mx-auto px-5 lg:px-8 text-center">
-          <h2 className="text-4xl font-black tracking-tight mb-5">
-            Open Insights in the demo.
-          </h2>
-          <p className="text-white/45 mb-10">The full charts, categories, and breakdowns are live and interactive.</p>
+      <section className="border-t border-white/[0.05] py-24">
+        <div className="mx-auto max-w-3xl px-5 text-center lg:px-8">
+          <h2 className="mb-5 text-4xl font-black tracking-tight">Open Insights in the demo.</h2>
+          <p className="mb-10 text-white/45">
+            The full charts, categories, and breakdowns are live and interactive.
+          </p>
           <Link
             href="/demo/insights"
-            className="inline-flex items-center h-12 px-8 rounded-full bg-teal text-navy text-sm font-bold hover:bg-teal-light transition-all shadow-teal"
+            className="inline-flex h-12 items-center rounded-full bg-teal px-8 text-sm font-bold text-navy shadow-teal transition-all hover:bg-teal-light"
           >
             Open Insights Screen
           </Link>
         </div>
       </section>
-
     </div>
   )
 }

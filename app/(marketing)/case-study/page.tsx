@@ -62,7 +62,7 @@ export default function CaseStudyPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative overflow-hidden pb-24 pt-32">
+      <section className="relative overflow-hidden pb-16 pt-24 sm:pb-24 sm:pt-32">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(0,200,170,0.10),transparent)]" />
         <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
           <div className="max-w-3xl">

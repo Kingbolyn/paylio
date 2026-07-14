@@ -55,7 +55,7 @@ export default function HeroSection() {
       <GlobeSVG />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 lg:px-8">
-        <div className="grid min-h-[calc(100vh-4rem)] items-center gap-12 py-20 lg:grid-cols-2 lg:gap-8 lg:py-0">
+        <div className="grid min-h-[calc(100vh-4rem)] items-center gap-12 py-10 sm:py-16 lg:grid-cols-2 lg:gap-8 lg:py-0">
           {/* Copy */}
           <div className="flex max-w-xl flex-col gap-7">
             <div

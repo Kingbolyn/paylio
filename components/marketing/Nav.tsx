@@ -114,7 +114,8 @@ export default function Nav() {
           <div className="absolute inset-0 bg-navy-deep/80 backdrop-blur-sm" />
           <nav
             id="mobile-nav"
-            className="absolute left-0 right-0 top-16 flex flex-col gap-1 border-b border-white/[0.08] bg-navy-mid px-5 py-4"
+            className="absolute left-0 right-0 top-16 flex flex-col gap-1 overflow-y-auto border-b border-white/[0.08] bg-navy-mid px-5 py-4"
+            style={{ maxHeight: 'calc(100vh - 4rem)' }}
             aria-label="Mobile navigation"
             onClick={(e) => e.stopPropagation()}
           >

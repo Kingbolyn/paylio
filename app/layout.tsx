@@ -25,6 +25,14 @@ export const metadata: Metadata = {
     description:
       'Banking, transfers, and insights built around you. A portfolio fintech concept by Apex Code.',
     locale: 'en_NG',
+    images: [
+      {
+        url: '/api/og',
+        width: 1200,
+        height: 630,
+        alt: 'Paylio — Money, made simple.',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
@@ -32,6 +40,7 @@ export const metadata: Metadata = {
     description:
       'Banking, transfers, and insights built around you. A portfolio fintech concept by Apex Code.',
     creator: '@apexcode',
+    images: ['/api/og'],
   },
 }
 
