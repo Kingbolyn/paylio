@@ -58,6 +58,7 @@ interface DemoState {
   pin: string | null
   biometricEnabled: boolean
   sessionUnlocked: boolean
+  displayCurrency: SupportedCurrency
 }
 
 type Action =
@@ -68,7 +69,24 @@ type Action =
   | { type: 'CLEAR_PIN' }
   | { type: 'TOGGLE_BIOMETRIC' }
   | { type: 'UNLOCK_SESSION' }
+  | { type: 'SET_CURRENCY'; currency: SupportedCurrency }
   | { type: 'HYDRATE'; partial: Partial<DemoState> }
+
+export type SupportedCurrency = 'NGN' | 'USD' | 'GBP' | 'EUR'
+
+export const CURRENCY_RATES: Record<SupportedCurrency, number> = {
+  NGN: 1,
+  USD: 1650,
+  GBP: 2100,
+  EUR: 1800,
+}
+
+export const CURRENCY_LABELS: Record<SupportedCurrency, string> = {
+  NGN: 'Nigerian Naira',
+  USD: 'US Dollar',
+  GBP: 'British Pound',
+  EUR: 'Euro',
+}
 
 function getInitials(name: string): string {
   const parts = name.trim().split(/\s+/).slice(0, 2)
@@ -84,6 +102,7 @@ const INITIAL: DemoState = {
   pin: null,
   biometricEnabled: false,
   sessionUnlocked: false,
+  displayCurrency: 'NGN',
 }
 
 function reducer(state: DemoState, action: Action): DemoState {
@@ -106,7 +125,7 @@ function reducer(state: DemoState, action: Action): DemoState {
       }
       return {
         ...state,
-        balance: Math.max(0, state.balance - action.amount),
+        balance: state.balance - action.amount,
         transactions: [txn, ...state.transactions],
       }
     }
@@ -143,6 +162,9 @@ function reducer(state: DemoState, action: Action): DemoState {
     case 'UNLOCK_SESSION':
       return { ...state, sessionUnlocked: true }
 
+    case 'SET_CURRENCY':
+      return { ...state, displayCurrency: action.currency }
+
     case 'HYDRATE':
       return { ...state, ...action.partial }
 
@@ -162,6 +184,7 @@ export interface DemoStore extends DemoState {
   verifyPin: (pin: string) => boolean
   toggleBiometric: () => void
   unlockSession: () => void
+  setCurrency: (currency: SupportedCurrency) => void
   groupedTransactions: [string, Transaction[]][]
 }
 
@@ -206,6 +229,7 @@ export function DemoProvider({ children }: { children: ReactNode }) {
     verifyPin: (pin) => state.pin === pin,
     toggleBiometric: () => dispatch({ type: 'TOGGLE_BIOMETRIC' }),
     unlockSession: () => dispatch({ type: 'UNLOCK_SESSION' }),
+    setCurrency: (currency) => dispatch({ type: 'SET_CURRENCY', currency }),
     groupedTransactions: getTransactionsByDate(state.transactions),
   }
 

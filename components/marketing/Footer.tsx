@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import PayloLogo from '@/components/marketing/PayloLogo'
 
 const sitemap = [
   {
@@ -77,24 +78,8 @@ export default function Footer() {
         <div className="mb-14 grid grid-cols-2 gap-8 md:grid-cols-5 md:gap-10">
           {/* Brand column */}
           <div className="col-span-2">
-            <Link href="/" className="mb-4 flex items-center gap-2.5">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal shadow-teal">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2Z"
-                    fill="white"
-                    fillOpacity="0.9"
-                  />
-                  <path
-                    d="M9 12l2 2.5 4-4.5"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-              <span className="text-lg font-extrabold tracking-tight text-white">Paylio</span>
+            <Link href="/" className="mb-4 inline-flex" aria-label="Paylio — home">
+              <PayloLogo size={32} wordmark />
             </Link>
             <p className="max-w-[220px] text-sm leading-relaxed text-white/40">
               Money, made simple. Banking, transfers, and insights built around you.
