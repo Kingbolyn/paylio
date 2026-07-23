@@ -19,12 +19,8 @@ function Inner({ children }: { children: ReactNode }) {
       <SidebarNav />
 
       {/* Content area */}
-      <div className="flex min-h-dvh flex-1 flex-col">
-        {/* Mobile/tablet: constrained shell; desktop: full-width */}
-        <div
-          id="app-shell"
-          className="relative mx-auto flex min-h-dvh w-full max-w-[430px] flex-col bg-navy lg:mx-0 lg:max-w-none"
-        >
+      <div className="flex min-h-dvh min-w-0 flex-1 flex-col overflow-x-hidden">
+        <div id="app-shell" className="relative flex min-h-dvh w-full flex-col bg-navy">
           <a
             href="#main-content"
             className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-teal focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-navy focus:shadow-teal"

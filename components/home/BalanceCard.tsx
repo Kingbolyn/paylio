@@ -159,8 +159,9 @@ export default function BalanceCard() {
           <div className="mb-1 flex min-h-[56px] items-end" aria-live="polite" aria-atomic="true">
             {visible ? (
               <span
-                className="text-[44px] font-extrabold leading-none transition-all duration-300"
+                className="font-extrabold leading-none transition-all duration-300"
                 style={{
+                  fontSize: 'clamp(26px, 9vw, 44px)',
                   letterSpacing: '-0.04em',
                   fontVariantNumeric: 'tabular-nums',
                   fontFeatureSettings: '"tnum" 1',
@@ -176,7 +177,8 @@ export default function BalanceCard() {
               </span>
             ) : (
               <span
-                className="text-[36px] font-extrabold leading-none tracking-[0.15em] text-white/25"
+                className="font-extrabold leading-none tracking-[0.15em] text-white/25"
+                style={{ fontSize: 'clamp(22px, 7.5vw, 36px)' }}
                 aria-label="Balance hidden"
               >
                 ••••••
